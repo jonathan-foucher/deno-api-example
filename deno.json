@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "dev": "deno run --allow-net --watch src/index.ts"
+    "dev": "deno run --env-file --allow-env --allow-net --watch src/index.ts"
   },
   "imports": {
     "@std/text": "jsr:@std/text@^1.0.8"

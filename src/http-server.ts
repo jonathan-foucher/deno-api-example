@@ -2,6 +2,7 @@ import * as logger from './utils/logger.ts'
 import { objToCamelCase } from './utils/converter.ts'
 import { Movie } from './models/movie.ts'
 
+const HTTP_PORT: number = Deno.env.get("HTTP_PORT")
 const API_MOVIES_ID_REGEX: RegExp = /^\/api\/movies\/(\d*)$/
 
 const isPathname = (req: Request, pathname: string): boolean => new URL(req.url).pathname === pathname
@@ -10,7 +11,7 @@ const isGet = (req: Request): boolean => req.method === 'GET'
 const isPost = (req: Request): boolean => req.method === 'POST'
 const isDelete = (req: Request): boolean => req.method === 'DELETE'
 
-Deno.serve({ port: 3000 }, async (req: Request): Promise<Response> => {
+Deno.serve({ port: HTTP_PORT }, async (req: Request): Promise<Response> => {
   if (isGet(req) && isPathname(req, '/api/movies')) {
     logger.info('Get all movies')
     return new Response('Get all movies')
