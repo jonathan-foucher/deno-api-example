@@ -1,8 +1,16 @@
 {
   "tasks": {
-    "dev": "deno run --env-file --allow-env --allow-net --watch src/index.ts"
+    "dev": "deno run --env-file --allow-env --allow-net --allow-read --watch src/index.ts"
   },
   "imports": {
-    "@std/text": "jsr:@std/text@^1.0.8"
-  }
+    "@std/text": "jsr:@std/text@^1.0.8",
+    "pg": "npm:pg@^8.13.1",
+    "pg-hstore": "npm:pg-hstore@^2.3.4",
+    "sequelize": "npm:sequelize@^6.37.5",
+    "sequelize-typescript": "npm:sequelize-typescript@^2.1.6"
+  },
+  "compilerOptions": {
+      "experimentalDecorators": true,
+      "strict": true
+    }
 }

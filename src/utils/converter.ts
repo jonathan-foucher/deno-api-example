@@ -1,10 +1,13 @@
-import { toCamelCase } from '@std/text'
+import { toCamelCase, toSnakeCase } from '@std/text'
 
-const objToCamelCase = (obj: any) => {
+const applyCaseToObj = (obj: any, toCaseFunction: Function) => {
   return Object.fromEntries(
     Object.entries(obj)
-      .map(entry => [toCamelCase(entry[0]), entry[1]])
+      .map(entry => [toCaseFunction(entry[0]), entry[1]])
   )
 }
 
-export { objToCamelCase }
+const objToCamelCase = (obj: any) => applyCaseToObj(obj, toCamelCase)
+const objToSnakeCase = (obj: any) => applyCaseToObj(obj, toSnakeCase)
+
+export { objToCamelCase, objToSnakeCase }
