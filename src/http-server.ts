@@ -24,7 +24,7 @@ Deno.serve({ port: HTTP_PORT }, async (req: Request): Promise<Response> => {
   }
 
   if (isDelete(req) && pathnameRegExTest(req, API_MOVIES_ID_REGEX)) {
-    const movieId = API_MOVIES_ID_REGEX.exec(new URL(req.url).pathname)?.[1]
+    const movieId: number = parseInt(API_MOVIES_ID_REGEX.exec(new URL(req.url).pathname)?.[1] || '', 10)
     if (movieId) {
       logger.info(`Delete movie with id ${movieId}`)
       return new Response(`Delete movie with id ${movieId}`)
