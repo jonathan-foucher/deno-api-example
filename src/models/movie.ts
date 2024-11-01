@@ -1,17 +1,23 @@
 import { Table, Model, Column, PrimaryKey, AllowNull, DataType } from 'npm:sequelize-typescript'
 
+export interface Movie {
+  id: number
+  title: string
+  releaseDate: Date
+}
+
 @Table({ tableName: 'movie', timestamps: false })
-export class Movie extends Model {
+export class MovieModel extends Model<Movie, Movie> {
   @PrimaryKey
   @AllowNull(false)
   @Column(DataType.INTEGER)
-  id: number
+  declare id: number
 
   @AllowNull(false)
   @Column(DataType.STRING)
-  title: string
+  declare title: string
 
   @AllowNull(false)
   @Column({ field: 'release_date', type: DataType.DATEONLY })
-  releaseDate: Date
+  declare releaseDate: Date
 }

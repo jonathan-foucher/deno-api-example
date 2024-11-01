@@ -1,6 +1,6 @@
 import * as logger from './utils/logger.ts'
 import * as dbConnection from './db-connection.ts'
-import { objToCamelCase, objToSnakeCase } from './utils/converter.ts'
+import { objToCamelCase, arrayToSnakeCase } from './utils/converter.ts'
 import { Movie } from './models/movie.ts'
 
 const HTTP_PORT: number = Deno.env.get('HTTP_PORT')
@@ -17,7 +17,7 @@ const server = Deno.serve({ port: HTTP_PORT }, async (req: Request): Promise<Res
     logger.info('Get all movies')
     return dbConnection.getAllMovies()
       .then(movies => new Response(
-        JSON.stringify(movies.map((movie) => objToSnakeCase(movie.dataValues))),
+        JSON.stringify(arrayToSnakeCase(movies)),
         { headers: { 'Content-Type': 'application/json' }}
       ))
   }

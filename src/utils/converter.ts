@@ -7,7 +7,7 @@ const applyCaseToObj = (obj: any, toCaseFunction: Function) => {
   )
 }
 
-const objToCamelCase = (obj: any) => applyCaseToObj(obj, toCamelCase)
-const objToSnakeCase = (obj: any) => applyCaseToObj(obj, toSnakeCase)
+const objToCamelCase = (obj: any) => applyCaseToObj(Object.assign({}, obj), toCamelCase)
+const arrayToSnakeCase = (array: Array<any>) => Object.assign([], array).map(obj => applyCaseToObj(obj, toSnakeCase))
 
-export { objToCamelCase, objToSnakeCase }
+export { objToCamelCase, arrayToSnakeCase }
