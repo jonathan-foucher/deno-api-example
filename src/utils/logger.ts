@@ -1,4 +1,12 @@
-const fontColors = {
+interface FontColors {
+  reset: string
+  red: string
+  green: string
+  yellow: string
+  blue: string
+}
+
+const fontColors: FontColors = {
   reset: '\x1b[0m',
   red: '\x1b[31m',
   green: '\x1b[32m',
