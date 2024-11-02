@@ -10,7 +10,7 @@
     "sequelize-typescript": "npm:sequelize-typescript@^2.1.6"
   },
   "compilerOptions": {
-      "experimentalDecorators": true,
-      "strict": true
-    }
+    "experimentalDecorators": true,
+    "strict": true
+  }
 }
